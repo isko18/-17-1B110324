@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from apps.base.models import Base, Popular_category,Our_chef,News
+from apps.base.models import Base, Popular_category,Our_chef,News, Our_advantages
 from apps.telegram.models import Telegram
 from apps.telegram.views import get_text
 from apps.telegram.forms import PERSONE_CHOISE, TIME_CHOISE
@@ -9,6 +9,7 @@ from apps.telegram.forms import PERSONE_CHOISE, TIME_CHOISE
 
 def index(request):
     base = Base.objects.latest('id')
+    advantages = Our_advantages.objects.all()
     category = Popular_category.objects.all()
     chef = Our_chef.objects.all().order_by('?')[:3]
     news = News.objects.all().order_by('?')[:2]
@@ -37,6 +38,7 @@ def index(request):
         'category': category,
         'chef': chef,
         'news': news,
+        'advantages' : advantages,
         'PERSONE_CHOISE': PERSONE_CHOISE,
         'TIME_CHOISE': TIME_CHOISE,
     })

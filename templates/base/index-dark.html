@@ -1,11 +1,14 @@
 {% extends 'include/homepage.html' %}
 {% load static %}
 {% block content %}
+{% load static i18n%}
+
 {% include 'include/header.html' %}
 
 
 
     ============================================= -->
+    
    <div class="banner-style-four-area text-light text-center bg-cover" style="background-image: url({{base.banner.url}});">
     <div class="banner-style-four-content shadow dark">
         <div class="container">
@@ -24,6 +27,11 @@
         </div>
     </div>
    </div>
+   <div class="translate">
+    <button class="loacithionBth"><span class="language-switch" data-language="ru">RU</span></button>
+    <button class="loacithionBth"><span class="language-switch" data-language="ky">KG</span></button>
+    
+</div>
     <!-- End Banner -->
 
     <!-- Start Top Feature 
@@ -126,38 +134,18 @@
             <div class="choose-us-style-one-items">
                 <div class="row">
                     <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 choose-us-style-one">
-                        <div class="item animate" data-animate="fadeInUp">
-                            <img src="{% static 'assets/img/icon/13.png' %}" alt="Icon">
-                            <h4>Quality Foods</h4>
-                            <p>
-                                Belonging sir curiosity discovery extremity yet forfeited prevailed own off. Travelling by introduced of mr terminated.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 choose-us-style-one">
-                        <div class="item animate" data-animate="fadeInUp" data-delay="200ms">
-                            <img src="{% static 'assets/img/icon/14.png' %}" alt="Icon">
-                            <h4>Fast Delivery</h4>
-                            <p>
-                                Belonging sir curiosity discovery extremity yet forfeited prevailed own off. Travelling by introduced of mr terminated.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
+                    {% for advantage in advantages %}
                     <div class="col-lg-4 col-md-6 choose-us-style-one">
                         <div class="item animate" data-animate="fadeInUp" data-delay="400ms">
                             <img src="{% static 'assets/img/icon/15.png' %}" alt="Icon">
-                            <h4>Delicious Recipes</h4>
+                            <h4>{{advantage.title}}</h4>
                             <p>
-                                Belonging sir curiosity discovery extremity yet forfeited prevailed own off. Travelling by introduced of mr terminated.
+                                {{advantage.description}}
                             </p>
                         </div>
                     </div>
                     <!-- End Single Item -->
+                     {% endfor %}
                 </div>
             </div>
         </div>
