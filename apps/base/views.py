@@ -47,3 +47,8 @@ def chef_detail(request, id):
     base = Base.objects.latest('id')
     chef = Our_chef.objects.get(id=id)
     return render(request, 'base/chef-details-dark.html', locals())
+
+
+def errors(request, exeption):
+    return render(request, '404/404.html', status=404)
+
